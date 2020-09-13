@@ -1,0 +1,181 @@
+{% extends 'index.html'%}
+{% load static %}
+{% block titulo%} {{ post.titulo  }} | Reloj de plastilina {% endblock titulo%}
+
+{% block cuerpo%}
+
+
+		<!-- PAGE HEADER -->
+		<div id="post-header" class="page-header">
+			<div class="page-header-bg" style="background-image: url('{{ post.imagen_referencial.url }}');" data-stellar-background-ratio="0.5"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10">
+						<div class="post-category">
+							<a>{{post.categoria}}</a>
+						</div>
+						<h1>  {{ post.titulo }}</h1>
+						<ul class="post-meta">
+							<li><a href="{% url 'blog:acerca'%}">  {{ post.autor.nombre }}</a></li>
+							<li>  {{ post.fecha_publicacion }}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /PAGE HEADER -->
+
+
+	<!-- section -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+				<div class="col-md-8">
+				
+
+					<!-- post content -->
+					<div class="section-row">
+						{{ post.contenido | safe}}
+					</div>
+					<!-- /post content -->
+
+					<!-- post tags -->
+					<div class="section-row">
+						
+					</div>
+					<!-- /post tags -->
+
+					<!-- post nav -->
+					<div class="section-row">
+						<div class="post-nav">
+							{% if post_anterior %}
+							<div class="prev-post">
+								<a class="post-img" href="{% url 'blog:detalle_post' post_anterior.slug %}"><img src={{post_anterior.imagen_referencial.url}} alt=""></a>
+								<h3 class="post-title"><a href="{% url 'blog:detalle_post' post_anterior.slug %}">{{post_anterior.titulo}}</a></h3>
+								<span>Post anterior</span>
+							</div>
+							{% endif %}
+
+							{% if post_posterior %}
+							<div class="next-post">
+								<a class="post-img" href="{% url 'blog:detalle_post' post_posterior.slug %}"><img src={{post_posterior.imagen_referencial.url}} alt=""></a>
+								<h3 class="post-title"><a href="{% url 'blog:detalle_post' post_posterior.slug %}">{{post_posterior.titulo}}</a></h3>
+								<span>Post siguiente</span>
+							</div>
+							{% endif %}
+
+						</div>
+					</div>
+					<!-- /post nav  -->
+
+					<!-- post author -->
+					<div class="section-row">
+						<div class="section-title">
+							<h3 class="title">Acerca de <a href="{% url 'blog:acerca'%}">{{post.autor.nombre}}</a></h3>
+						</div>
+						<div class="author media">
+							<div class="media-left">
+								<a href="author.html">
+									<img class="author-img media-object" src="{{autor.imagen_referencial.url}}" alt="">
+								</a>
+							</div>
+							<div class="media-body">
+								<p>{{autor.descripcion}}</p>
+								<ul class="author-social">
+									<li><a href="{{autor.facebook}}"><i class="fa fa-tumblr"></i></a></li>
+									<li><a href="{{autor.twitter}}"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="{{autor.instagram}}"><i class="fa fa-instagram"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /post author -->
+
+					<!-- /related post -->
+					<div>
+						<div class="section-title">
+							<h3 class="title">Posts relacionados</h3>
+						</div>
+						<div class="row">
+
+						{% for post in related_posts%}
+							<!-- post -->
+							<div class="col-md-4">
+								<div class="post post-sm">
+									<a class="post-img" href="{% url 'blog:detalle_post' post.slug %}"><img src="{{post.imagen_referencial.url}}" alt=""></a>
+									<div class="post-body">
+										<div class="post-category">
+											<a>{{post.categoria}}</a>
+										</div>
+										<h3 class="post-title title-sm"><a href="{% url 'blog:detalle_post' post.slug %}">{{post.titulo}}</a></h3>
+										<ul class="post-meta">
+											<li><a href="{% url 'blog:acerca'%}">{{post.autor.nombre}}</a></li>
+											<li>{{post.fecha_publicacion}}</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- /post -->
+						{% endfor %}
+						</div>
+					</div>
+					<!-- /related post -->
+				</div>
+				<div class="col-md-4">
+					<!-- category widget -->
+					<div class="aside-widget">
+						<div class="section-title">
+							<h2 class="title">Categorías</h2>
+						</div>
+						<div class="category-widget">
+							<ul>
+								<li><a href="{% url 'blog:musica' %}">Música </a></li>
+								<li><a href="{% url 'blog:cine' %}">Cine </a></li>
+								<li><a href="{% url 'blog:ensayos' %}">Ensayos </a></li>
+								<li><a href="{% url 'blog:novelas' %}">Novelas </a></li>
+								<li><a href="{% url 'blog:poesia' %}">Poesía </a></li>
+								<li><a href="{% url 'blog:cronicas' %}">Crónicas </li>
+								<li><a href="{% url 'blog:cuentos' %}">Cuentos</a></li>
+								<li><a href="{% url 'blog:fotografia' %}">Fotografía </a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- /category widget -->
+	
+
+				
+
+					<!-- post widget -->
+					<div class="aside-widget">
+						<div class="section-title">
+							<h2 class="title">Posts populares</h2>
+						</div>
+						
+						{% for post in random_posts %}
+						<!-- post -->
+						<div class="post post-widget">
+							<a class="post-img" href="{% url 'blog:detalle_post' post.slug %}"><img src="{{post.imagen_referencial.url}}" alt=""></a>
+							<div class="post-body">
+								<div class="post-category">
+									<a>{{post.categoria}}</a>
+								</div>
+								<h3 class="post-title"><a href="{% url 'blog:detalle_post' post.slug %}">{{post.titulo}}</a></h3>
+							</div>
+						</div>
+						<!-- /post -->
+						{% endfor %}
+					</div>
+					<!-- /post widget -->
+
+				
+				</div>
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /SECTION -->
+
+{% endblock cuerpo%}
