@@ -27,7 +27,7 @@ SECRET_KEY = '+-r6=4z-sxvzb(ujb5+^8b7+36)j-6!(@lr53s@mv_ovg-c2c9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['relojdeplastilina.herokuapp.com']
 
 
 # Application definition
