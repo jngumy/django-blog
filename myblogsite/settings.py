@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '+-r6=4z-sxvzb(ujb5+^8b7+36)j-6!(@lr53s@mv_ovg-c2c9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['relojdeplastilina.herokuapp.com']
 
