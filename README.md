@@ -1,7 +1,7 @@
 # Blog system - Django
 
 This is a blog project using Django Framework, Sqlite for the database and Bootsrap and Javascript for the frontend. You can upload your favorite 
-posts and classify them in categories such as Movies, Reading, Music, among others. Production settings and static files generated.
+posts and classify them in categories such as Movies, Reading, Music, among others and also search posts by name. Production settings and static files included.
 
 ## Usage
 
