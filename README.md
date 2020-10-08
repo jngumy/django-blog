@@ -3,6 +3,12 @@
 This is a blog project using Django Framework, Sqlite for the database and Bootsrap and Javascript for the frontend. You can upload your favorite 
 posts and classify them in categories such as Movies, Reading, Music, among others and also search posts by name. Production settings and static files included.
 
+
+## Preview
+![img](https://raw.githubusercontent.com/jngumy/blog_prod/master/demo-images/blog.png)
+![img](https://raw.githubusercontent.com/jngumy/blog_prod/master/demo-images/category.png)
+![img](https://raw.githubusercontent.com/jngumy/blog_prod/master/demo-images/detailpost.png)
+
 ## Usage
 
 It's best to install Python projects in a Virtual Environment. Once you have set up a VE, clone this project
